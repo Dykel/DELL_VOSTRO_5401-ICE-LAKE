@@ -1078,11 +1078,11 @@
 			<key>MaxBIOSVersion</key>
 			<false/>
 			<key>MLB</key>
-			<string>C020079024N0000FB</string>
+			<string>C02025802J90000JC</string>
 			<key>ProcessorType</key>
 			<integer>0</integer>
 			<key>ROM</key>
-			<data>sInNuVSJ</data>
+			<data>SSxCv6N8</data>
 			<key>SpoofVendor</key>
 			<false/>
 			<key>SystemMemoryStatus</key>
@@ -1090,9 +1090,9 @@
 			<key>SystemProductName</key>
 			<string>MacBookPro16,2</string>
 			<key>SystemSerialNumber</key>
-			<string>C02C80ANML7H</string>
+			<string>C02CW0T7ML7H</string>
 			<key>SystemUUID</key>
-			<string>4CA08503-4266-4FA6-86A8-D5101BF17808</string>
+			<string>ACA98666-39A0-4D4A-B329-1A096BBFA37C</string>
 		</dict>
 		<key>PlatformNVRAM</key>
 		<dict>
@@ -1103,13 +1103,13 @@
 			<key>FirmwareFeaturesMask</key>
 			<data>f////wAAAAA=</data>
 			<key>MLB</key>
-			<string>C020079024N0000FB</string>
+			<string>C02025802J90000JC</string>
 			<key>ROM</key>
-			<data>sInNuVSJ</data>
+			<data>SSxCv6N8</data>
 			<key>SystemSerialNumber</key>
-			<string>C02C80ANML7H</string>
+			<string>C02CW0T7ML7H</string>
 			<key>SystemUUID</key>
-			<string>4CA08503-4266-4FA6-86A8-D5101BF17808</string>
+			<string>ACA98666-39A0-4D4A-B329-1A096BBFA37C</string>
 		</dict>
 		<key>UpdateDataHub</key>
 		<true/>

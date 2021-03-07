@@ -1,11 +1,11 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20180427 (64-bit version)(RM)
- * Copyright (c) 2000 - 2018 Intel Corporation
+ * AML/ASL+ Disassembler version 20200925 (64-bit version)
+ * Copyright (c) 2000 - 2020 Intel Corporation
  * 
- * Disassembling to non-symbolic legacy ASL operators
+ * Disassembling to symbolic ASL+ operators
  *
- * Disassembly of iASLwtjK5U.aml, Sat Mar  6 14:59:59 2021
+ * Disassembly of iASLqrLLmt.aml, Sun Mar  7 21:11:15 2021
  *
  * Original Table Header:
  *     Signature        "SSDT"
@@ -20,20 +20,20 @@
  */
 DefinitionBlock ("", "SSDT", 2, "Hack", "HackLife", 0x00000000)
 {
-    External (_SB_.AC__, DeviceObj)    // (from opcode)
-    External (_SB_.ACOS, IntObj)    // (from opcode)
-    External (_SB_.ACSE, IntObj)    // (from opcode)
-    External (_SB_.PCI0, DeviceObj)    // (from opcode)
-    External (_SB_.PCI0.GFX0, DeviceObj)    // (from opcode)
-    External (_SB_.PCI0.I2C1, DeviceObj)    // (from opcode)
-    External (_SB_.PCI0.I2C1.TPD0, DeviceObj)    // (from opcode)
-    External (_SB_.PCI0.LPCB, DeviceObj)    // (from opcode)
-    External (_SB_.PCI0.LPCB.PS2K, DeviceObj)    // (from opcode)
-    External (_SB_.PCI0.SBUS, DeviceObj)    // (from opcode)
-    External (_SB_.PR00, ProcessorObj)    // (from opcode)
-    External (STAS, IntObj)    // (from opcode)
-    External (TPDM, FieldUnitObj)    // (from opcode)
-    External (XPRW, MethodObj)    // 2 Arguments (from opcode)
+    External (_SB_.AC__, DeviceObj)
+    External (_SB_.ACOS, IntObj)
+    External (_SB_.ACSE, IntObj)
+    External (_SB_.PCI0, DeviceObj)
+    External (_SB_.PCI0.GFX0, DeviceObj)
+    External (_SB_.PCI0.I2C1, DeviceObj)
+    External (_SB_.PCI0.I2C1.TPD0, DeviceObj)
+    External (_SB_.PCI0.LPCB, DeviceObj)
+    External (_SB_.PCI0.LPCB.PS2K, DeviceObj)
+    External (_SB_.PCI0.SBUS, DeviceObj)
+    External (_SB_.PR00, ProcessorObj)
+    External (STAS, IntObj)
+    External (TPDM, FieldUnitObj)
+    External (XPRW, MethodObj)    // 2 Arguments
 
     Scope (\)
     {
@@ -41,10 +41,10 @@ DefinitionBlock ("", "SSDT", 2, "Hack", "HackLife", 0x00000000)
         {
             If (_OSI ("Darwin"))
             {
-                Store (One, STAS)
-                Store (Zero, TPDM)
-                Store (0x80, \_SB.ACOS)
-                Store (Zero, \_SB.ACSE)
+                STAS = One
+                TPDM = Zero
+                \_SB.ACOS = 0x80
+                \_SB.ACSE = Zero
             }
         }
     }
@@ -101,7 +101,7 @@ DefinitionBlock ("", "SSDT", 2, "Hack", "HackLife", 0x00000000)
             {
                 Device (ARTC)
                 {
-                    Name (_HID, "ACPI000E")  // _HID: Hardware ID
+                    Name (_HID, "ACPI000E" /* Time and Alarm Device */)  // _HID: Hardware ID
                     Method (_GCP, 0, NotSerialized)  // _GCP: Get Capabilities
                     {
                         Return (0x05)
@@ -122,7 +122,7 @@ DefinitionBlock ("", "SSDT", 2, "Hack", "HackLife", 0x00000000)
 
                 Device (DMAC)
                 {
-                    Name (_HID, EisaId ("PNP0200"))  // _HID: Hardware ID
+                    Name (_HID, EisaId ("PNP0200") /* PC-class DMA Controller */)  // _HID: Hardware ID
                     Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
                     {
                         IO (Decode16,
@@ -261,11 +261,11 @@ DefinitionBlock ("", "SSDT", 2, "Hack", "HackLife", 0x00000000)
                         Name (_CID, "diagsvault")  // _CID: Compatible ID
                         Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
                         {
-                            If (LNot (Arg2))
+                            If (!Arg2)
                             {
                                 Return (Buffer (One)
                                 {
-                                     0x57                                           
+                                     0x57                                             // W
                                 })
                             }
 
@@ -346,11 +346,11 @@ DefinitionBlock ("", "SSDT", 2, "Hack", "HackLife", 0x00000000)
             {
                 Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
                 {
-                    If (LEqual (Arg2, Zero))
+                    If ((Arg2 == Zero))
                     {
                         Return (Buffer (One)
                         {
-                             0x03                                           
+                             0x03                                             // .
                         })
                     }
 
@@ -368,11 +368,11 @@ DefinitionBlock ("", "SSDT", 2, "Hack", "HackLife", 0x00000000)
             Name (_ADR, Zero)  // _ADR: Address
             Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
             {
-                If (LEqual (Arg2, Zero))
+                If ((Arg2 == Zero))
                 {
                     Return (Buffer (One)
                     {
-                         0x03                                           
+                         0x03                                             // .
                     })
                 }
 
@@ -407,7 +407,7 @@ DefinitionBlock ("", "SSDT", 2, "Hack", "HackLife", 0x00000000)
     {
         If (_OSI ("Darwin"))
         {
-            If (LEqual (0x6D, Arg0))
+            If ((0x6D == Arg0))
             {
                 Return (Package (0x02)
                 {
@@ -416,7 +416,7 @@ DefinitionBlock ("", "SSDT", 2, "Hack", "HackLife", 0x00000000)
                 })
             }
 
-            If (LEqual (0x0D, Arg0))
+            If ((0x0D == Arg0))
             {
                 Return (Package (0x02)
                 {
