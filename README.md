@@ -5,9 +5,6 @@
 [![](https://img.shields.io/badge/Facebook-HackintoshLifeIT-informational?style=flat&logo=facebook&logoColor=white&color=3a4dc9)](https://www.facebook.com/hackintoshlife/)
 [![](https://img.shields.io/badge/Instagram-HackintoshLifeIT-informational?style=flat&logo=instagram&logoColor=white&color=8a178a)](https://www.instagram.com/hackintoshlife.it_official/)
 
-
-
-
 EFI for Dell Vostro 5501 with OpenCore bootloader
 
 (Compatible for Dell Inspiron 5401/5408/5501/5508 e Vostro 5401/5501, these laptops use the same bios file)
