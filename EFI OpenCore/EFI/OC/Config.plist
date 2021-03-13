@@ -888,7 +888,7 @@
 			<key>PickerVariant</key>
 			<string>Modern</string>
 			<key>PollAppleHotKeys</key>
-			<false/>
+			<true/>
 			<key>ShowPicker</key>
 			<true/>
 			<key>TakeoffDelay</key>
@@ -1091,7 +1091,7 @@
 			<key>ROM</key>
 			<data>sInNuVSJ</data>
 			<key>SystemSerialNumber</key>
-			<string>C02C40ZLML7H</string>
+			<string></string>
 			<key>SystemUUID</key>
 			<string>4F55C6FD-709C-44EA-9E74-A714151365FA</string>
 		</dict>
